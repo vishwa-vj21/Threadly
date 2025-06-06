@@ -1,0 +1,14 @@
+Cmd:
+make sure you're on your desired folder
+git clone -b starter-code https://github.com/joschan21/breadit.git
+cd breadit
+code .
+
+Vs code:
+Prisma schema file:
+npx prisma init
+Installing new package manager:
+yarn
+Using shadcn for button:(provides you with good css for button)
+npx shadcn-ui add button
+
