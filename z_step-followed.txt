@@ -12,3 +12,4 @@ yarn
 Using shadcn for button:(provides you with good css for button)
 npx shadcn-ui add button
 
+cn function twmerge optimizes your code and clsx is for conditional class names
