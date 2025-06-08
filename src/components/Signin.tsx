@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Icons } from "./Icons";
+import UserAuthForm from "./UserAuthForm";
 
 const Signin = () => {
   return (
@@ -13,6 +14,7 @@ const Signin = () => {
         </p>
 
         {/* sign-in component   */}
+        <UserAuthForm />
 
         <p className="text-sm text-center text-zinc-700 px-8">
           New to Breaddit?{" "}
