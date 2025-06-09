@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui/Toaster";
 export const metadata = {
   title: "Breadit",
   description: "A Reddit clone built with Nex t.js and TypeScript.",
