@@ -13,3 +13,17 @@ Using shadcn for button:(provides you with good css for button)
 npx shadcn-ui add button
 
 cn function twmerge optimizes your code and clsx is for conditional class names
+
+# Threadly
+
+
+Database using aiven.io
+Authentication using prisma+JST+NextAuth
+Schema-prisma
+
+Perfecting authentication flow:
+Route intercepting: It allows the web application to display the content from another route without a full page reload or context switch.
+onClick={() => router.back()} - navigate to the previous history entry
+shift+alt+O - remove unused imports
+cuid() - collision resistent unique identifier
+Shift+alt+F - 
