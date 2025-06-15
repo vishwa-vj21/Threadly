@@ -3,9 +3,10 @@ import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/Toaster";
+import Providers from "@/components/Providers";
 export const metadata = {
-  title: "Breadit",
-  description: "A Reddit clone built with Nex t.js and TypeScript.",
+  title: "Threadly",
+  description: "A Reddit clone built with Next.js and TypeScript.",
 };
 const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({
@@ -24,13 +25,15 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-screen pt-12 bg-slate-50 antialiased">
-        {/*@ts-expect-error sever componenent*/}
-        <Navbar />
-        {authModal}
-        <div className="container max-w-7xl mx-auto h-full pt-12">
-          {children}
-        </div>
-        <Toaster />
+        <Providers>
+          {/*@ts-expect-error sever componenent*/}
+          <Navbar />
+          {authModal}
+          <div className="container max-w-7xl mx-auto h-full pt-12">
+            {children}
+          </div>
+          <Toaster />
+        </Providers>
       </body>
     </html>
   );

@@ -26,4 +26,15 @@ Route intercepting: It allows the web application to display the content from an
 onClick={() => router.back()} - navigate to the previous history entry
 shift+alt+O - remove unused imports
 cuid() - collision resistent unique identifier
-Shift+alt+F - 
+#Shift+alt+F - 
+
+useMutation in TanStack React Query (also known as React Query) is a powerful hook designed for handling asynchronous operations that change data on the server — such as:
+
+creating a new record (e.g., POST /api/users)
+
+updating a record (e.g., PUT /api/users/:id)
+
+deleting a record (e.g., DELETE /api/users/:id)
+
+Prisma changes to push into database: yarn prisma db push
+Generate typescript types:           yarn prisma generate
