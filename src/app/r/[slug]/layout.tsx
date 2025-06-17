@@ -1,5 +1,6 @@
 // import SubscribeLeaveToggle from '@/components/SubscribeLeaveToggle'
 // import ToFeedButton from '@/components/ToFeedButton'
+import SubscribeLeaveToggle from "@/components/SubscribeLeaveToggle";
 import { buttonVariants } from "@/components/ui/Button";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -90,6 +91,14 @@ const Layout = async ({
                 <div className="flex justify-between gap-x-4 py-3">
                   <dt className="text-gray-500">You created this community</dt>
                 </div>
+              ) : null}
+
+              {subreddit.creatorId !== session?.user.id ? (
+                <SubscribeLeaveToggle
+                  isSubscribed={isSubscribed}
+                  subredditId={subreddit.id}
+                  subredditName={subreddit.name}
+                />
               ) : null}
 
               <Link
