@@ -38,3 +38,6 @@ deleting a record (e.g., DELETE /api/users/:id)
 
 Prisma changes to push into database: yarn prisma db push
 Generate typescript types:           yarn prisma generate
+
+aiven cloud - mysql database used
+uploadthing - for posting
