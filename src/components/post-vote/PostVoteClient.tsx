@@ -7,6 +7,10 @@ import { usePrevious } from "@mantine/hooks";
 import { Button } from "../ui/Button";
 import { ArrowBigDown, ArrowBigUp } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useMutation } from "@tanstack/react-query";
+import axios, { AxiosError } from "axios";
+import { PostVoteRequest } from "@/lib/validators/vote";
+import { toast } from "@/hooks/use-toast";
 
 interface PostVoteClientProps {
   postId: string;
@@ -28,11 +32,55 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
     setCurrentVote(initialVote);
   }, [initialVote]);
 
+  const { mutate: vote } = useMutation({
+    mutationFn: async (voteType: VoteType) => {
+      const payload: PostVoteRequest = {
+        postId,
+        voteType,
+      };
+      await axios.patch("/api/subreddit/post/vote", payload);
+    },
+    onMutate: (type: VoteType) => {
+      // Optimistically update vote
+      if (currentVote === type) {
+        // User is removing their vote
+        setCurrentVote(undefined);
+        setVotesAmt((prev) => (type === "UP" ? prev - 1 : prev + 1));
+      } else {
+        // User is switching or voting for first time
+        setCurrentVote(type);
+        setVotesAmt((prev) => {
+          if (currentVote === undefined) {
+            // First time vote
+            return type === "UP" ? prev + 1 : prev - 1;
+          } else {
+            // Switching vote
+            return type === "UP" ? prev + 2 : prev - 2;
+          }
+        });
+      }
+    },
+    onError: (err, voteType) => {
+      // Rollback optimistic update
+      setVotesAmt(initialVotesAmt);
+      setCurrentVote(prevVote);
+
+      if (err instanceof AxiosError && err.response?.status === 401) {
+        return loginToast();
+      }
+      return toast({
+        title: "Something went wrong.",
+        description: "Your vote was not registered. Please try again later.",
+        variant: "destructive",
+      });
+    },
+  });
+
   return (
     <div className="flex flex-col gap-4 sm:gap-0 pr-6 sm:w-20 pb-4 sm:pb-0">
       {/* upvote */}
       <Button
-        // onClick={() => vote('UP')}
+        onClick={() => vote("UP")}
         size="sm"
         variant="ghost"
         aria-label="upvote"
@@ -51,7 +99,7 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
 
       {/* downvote */}
       <Button
-        // onClick={() => vote('DOWN')}
+        onClick={() => vote("DOWN")}
         size="sm"
         className={cn({
           "text-emerald-500": currentVote === "DOWN",
