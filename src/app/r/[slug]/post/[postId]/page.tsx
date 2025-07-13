@@ -31,7 +31,11 @@ const page = async ({ params }: PageProps) => {
     });
     if (!post && !cachedPost) return notFound();
 
-    return <div>page</div>;
+    return (
+      <div>
+        <div></div>
+      </div>
+    );
   }
 };
 export default page;
