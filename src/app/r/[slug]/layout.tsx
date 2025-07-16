@@ -11,7 +11,7 @@ import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "Breadit",
+  title: "Threadly",
   description: "A Reddit clone built with Next.js and TypeScript.",
 };
 

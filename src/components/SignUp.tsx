@@ -11,7 +11,7 @@ const SignUp = () => {
         </div>
         <h1 className="text-2xl font-semibold tracking-tight">Sign Up</h1>
         <p className="text-sm max-w-xs mx-auto">
-          By continuing, you are setting up a breadit account and agree to our
+          By continuing, you are setting up a Threadly account and agree to our
           user Agreement and Privacy Policy
         </p>
 
@@ -19,7 +19,7 @@ const SignUp = () => {
         <UserAuthForm />
 
         <p className="text-sm text-center text-zinc-700 px-8">
-          Already a Breadit user?{" "}
+          Already a Threadly user?{" "}
           <Link
             href="/sign-in"
             className="hover:text-zinc-800 text-sm underline underline-offset-4"

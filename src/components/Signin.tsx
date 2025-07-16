@@ -11,7 +11,7 @@ const Signin = () => {
         </div>
         <h1 className="text-2xl font-semibold tracking-tight">Welcome back</h1>
         <p className="text-sm max-w-xs mx-auto">
-          By continuing, you are setting up a breadit account and agree to our
+          By continuing, you are setting up a Threadly account and agree to our
           user Agreement and Privacy Policy
         </p>
 
