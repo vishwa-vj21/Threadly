@@ -5,3 +5,4 @@ declare module "@editorjs/code";
 declare module "@editorjs/link";
 declare module "@editorjs/inline-code";
 declare module "@editorjs/image";
+declare module "@editorjs/header";
