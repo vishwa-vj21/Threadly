@@ -41,3 +41,6 @@ Generate typescript types:           yarn prisma generate
 
 aiven cloud - mysql database used
 uploadthing - for posting
+
+for editorjs__header error run:
+ Remove-Item -Recurse -Force node_modules\@types\editorjs__header
