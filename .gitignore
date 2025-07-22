@@ -35,4 +35,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-/z_step-followed.txt
+
+z_step-followed.txt
