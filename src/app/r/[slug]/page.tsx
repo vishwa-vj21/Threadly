@@ -4,8 +4,6 @@ import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
-import { FC } from "react";
-// import { PageProps } from "../../../../.next/types/app/layout";
 
 interface PageProps {
   params: {

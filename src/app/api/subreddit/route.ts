@@ -28,7 +28,7 @@ export async function POST(req: Request) {
         creatorId: session.user.id,
       },
     });
-    const subscribed = await db.subscription.create({
+    await db.subscription.create({
       data: {
         userId: session.user.id,
         subredditId: subreddit.id,

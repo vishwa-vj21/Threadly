@@ -1,8 +1,7 @@
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config";
+import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import PostFeed from "./PostFeed";
-import { getAuthSession } from "@/lib/auth";
-import { Dribbble } from "lucide-react";
 
 export const CustomFeed = async () => {
   const session = await getAuthSession();
