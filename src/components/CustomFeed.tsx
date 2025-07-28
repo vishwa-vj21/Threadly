@@ -2,13 +2,17 @@ import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import PostFeed from "./PostFeed";
+import { notFound } from "next/navigation";
 
-export const CustomFeed = async () => {
+const CustomFeed = async () => {
   const session = await getAuthSession();
+
+  // only rendered if session exists, so this will not happen
+  if (!session) return notFound();
 
   const followedCommunities = await db.subscription.findMany({
     where: {
-      userId: session?.user.id,
+      userId: session.user.id,
     },
     include: {
       subreddit: true,
@@ -19,7 +23,7 @@ export const CustomFeed = async () => {
     where: {
       subreddit: {
         name: {
-          in: followedCommunities.map(({ subreddit }) => subreddit.id),
+          in: followedCommunities.map((sub) => sub.subreddit.name),
         },
       },
     },
@@ -34,5 +38,8 @@ export const CustomFeed = async () => {
     },
     take: INFINITE_SCROLLING_PAGINATION_RESULTS,
   });
+
   return <PostFeed initialPosts={posts} />;
 };
+
+export default CustomFeed;

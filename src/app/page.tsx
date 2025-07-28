@@ -3,7 +3,8 @@ import { getAuthSession } from "@/lib/auth";
 import { HomeIcon } from "lucide-react";
 import Link from "next/link";
 import { GeneralFeed } from "@/components/GeneralFeed";
-import { CustomFeed } from "@/components/CustomFeed";
+import CustomFeed from "@/components/CustomFeed";
+console.log("CustomFeed:", CustomFeed);
 
 export const dynamic = "force-dynamic";
 export default async function Home() {
