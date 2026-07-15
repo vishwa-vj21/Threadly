@@ -47,16 +47,16 @@ export default async function Home() {
               </h3>
 
               <ul className="mt-3 space-y-2 text-sm text-zinc-600">
-                <li>• Be respectful and welcoming.</li>
-                <li>• Share quality content and discussions.</li>
-                <li>• Follow each community's rules.</li>
+                <li>Be respectful and welcoming.</li>
+                <li>Share quality content and discussions.</li>
+                <li>Follow each community&apos;s rules.</li>
               </ul>
             </div>
 
             {/* Quote */}
             <div className="mt-5 rounded-lg border-l-4 border-zinc-900 bg-zinc-100 p-4">
               <p className="text-sm italic text-zinc-700">
-                "Great communities are built through thoughtful conversations."
+                Great communities are built through thoughtful conversations.
               </p>
             </div>
 
