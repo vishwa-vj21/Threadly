@@ -60,6 +60,7 @@ const Layout = async ({
       },
     },
   });
+  const postCount = subreddit.posts.length;
 
   return (
     <div className="sm:container max-w-7xl mx-auto h-full pt-12">
@@ -68,49 +69,77 @@ const Layout = async ({
           <ul className="flex flex-col col-span-2 space-y-6">{children}</ul>
 
           {/* info sidebar */}
-          <div className="overflow-hidden h-fit rounded-lg border border-gray-200 order-first md:order-last">
-            <div className="px-6 py-4">
-              <p className="font-semibold py-3">About r/{subreddit.name}</p>
-            </div>
-            <dl className="divide-y divide-gray-100 px-6 py-4 text-sm leading-6 bg-white">
-              <div className="flex justify-between gap-x-4 py-3">
-                <dt className="text-gray-500">Created</dt>
-                <dd className="text-gray-700">
-                  <time dateTime={subreddit.createdAt.toDateString()}>
-                    {format(subreddit.createdAt, "MMMM d, yyyy")}
-                  </time>
-                </dd>
-              </div>
-              <div className="flex justify-between gap-x-4 py-3">
-                <dt className="text-gray-500">Members</dt>
-                <dd className="flex items-start gap-x-2">
-                  <div className="text-gray-900">{memberCount}</div>
-                </dd>
-              </div>
-              {subreddit.creatorId === session?.user?.id ? (
-                <div className="flex justify-between gap-x-4 py-3">
-                  <dt className="text-gray-500">You created this community</dt>
+          <div className="overflow-hidden rounded-xl border border-gray-200 bg-white h-fit order-first md:order-last shadow-sm">
+            <div className="px-6 py-6 border-b bg-gray-50">
+              <div className="flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-xl font-bold text-white">
+                  {subreddit.name.charAt(0).toUpperCase()}
                 </div>
-              ) : null}
 
-              {subreddit.creatorId !== session?.user.id ? (
+                <div>
+                  <h2 className="font-semibold text-lg">r/{subreddit.name}</h2>
+
+                  <p className="text-sm text-gray-500">Community discussion</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="px-6 py-4 space-y-5">
+              {/* Add later if you implement descriptions */}
+              {/* <p className="text-sm text-gray-600">
+      {subreddit.description}
+    </p> */}
+
+              <div className="grid grid-cols-2 gap-4 text-center">
+                <div className="rounded-lg bg-gray-50 py-3">
+                  <p className="text-xl font-bold">{memberCount}</p>
+                  <p className="text-xs text-gray-500 uppercase">Members</p>
+                </div>
+
+                <div className="rounded-lg bg-gray-50 py-3">
+                  <p className="text-xl font-bold">{postCount}</p>
+                  <p className="text-xs text-gray-500 uppercase">Posts</p>
+                </div>
+              </div>
+
+              <div className="border-t pt-4">
+                <div className="flex justify-between py-2 text-sm">
+                  <span className="text-gray-500">Created</span>
+
+                  <span className="font-medium">
+                    {format(subreddit.createdAt, "MMM d, yyyy")}
+                  </span>
+                </div>
+
+                {subreddit.creatorId === session?.user?.id && (
+                  <div className="flex justify-between py-2 text-sm">
+                    <span className="text-gray-500">Role</span>
+
+                    <span className="font-medium text-emerald-600">
+                      👑 Creator
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {subreddit.creatorId !== session?.user?.id && (
                 <SubscribeLeaveToggle
                   isSubscribed={isSubscribed}
                   subredditId={subreddit.id}
                   subredditName={subreddit.name}
                 />
-              ) : null}
+              )}
 
               <Link
+                href={`/r/${slug}/submit`}
                 className={buttonVariants({
                   variant: "outline",
-                  className: "w-full mb-6",
+                  className: "w-full",
                 })}
-                href={`/r/${slug}/submit`}
               >
                 Create Post
               </Link>
-            </dl>
+            </div>
           </div>
         </div>
       </div>

@@ -73,7 +73,8 @@ const Page = () => {
         <div>
           <p className="text-lg font-medium">Name</p>
           <p className="text-xs pb-2">
-            Community names including capitalization cannot be changed.
+            Community names may only contain letters, numbers, and underscores.
+            Spaces are not allowed.
           </p>
           <div className="relative">
             <p className="absolute tx-sm left-0 w-8 inset-y-0 grid place-items-center text-zinc-400">
